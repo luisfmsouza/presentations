@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Center Vertical Box with flexible content</title>
+
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="fence">
+        <div class="grass">
+            <h1>Login</h1>
+            <form id="login" action="#">
+                <div class="line">
+                    <label for="name">Nome: </label><input name="name" type="text" />
+                </div>
+                <div class="line">
+                    <label for="name">Email: </label><input name="email" type="text" />
+                </div>
+                <div class="line"><input id="submit" type="submit" value="Enviar" /></div>
+            </form>
+            <div id="success">
+                <div class="line">Parabéns, seu login foi efetuado com sucesso!</div>
+                <a id="again" href="#">Logar novamente</a>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#submit').on('click', function(e){
+            e.preventDefault();
+            $('#login').fadeOut(function(){
+                $('#success').fadeIn('fast');
+            });
+        });
+        $('#login').on('submit', function(e){
+            $('#submit').trigger('click');
+        });
+        $('#again').on('click', function(){
+            $('#success').fadeOut(function(){
+                $('#login').fadeIn('fast');
+            });
+        });
+    </script>
+</body>
+</html>
